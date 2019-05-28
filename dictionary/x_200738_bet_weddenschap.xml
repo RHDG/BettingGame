@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Weddenschap" max_length="40" name="x_200738_bet_weddenschap" type="collection">
+        <element attributes="no_add_me=true,no_email=true,slushbucket_ref_no_expand=true" dynamic_ref_qual="e9b5161a0f983b409a53cd8ce1050e71" label="Geaccepteerd door" max_length="32" name="geaccepteerd" read_only="true" reference="sys_user" reference_qual="javascript:new x_200738_bet.BettingGameUtils(current).getPlayersForBet()" type="glide_list" use_reference_qualifier="dynamic"/>
+        <element default="javascript:gs.getUserID()" dynamic_default_value="2fd8e97bef3221002841f7f775c0fbc1" label="Uitdager" max_length="32" name="gemaakt_door" read_only="true" reference="sys_user" type="reference" use_dynamic_default="true"/>
+        <element label="Inzet" mandatory="true" max_length="4" name="inzet" type="integer"/>
+        <element label="Jury" max_length="32" name="jury" read_only="true" reference="sys_user" reference_qual="x_200738_bet_betting_game=true^EQ" reference_qual_condition="x_200738_bet_betting_game=true^EQ" type="reference"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" display="true" label="Nummer" max_length="40" name="number" read_only="true" type="string"/>
+        <element label="Ik wed dat..." mandatory="true" max_length="1000" name="omschrijving" type="string"/>
+        <element choice="3" default="0" label="Status" max_length="255" name="state" read_only="true" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Nieuw" sequence="10" value="0"/>
+                <element inactive_on_update="false" label="Uitgedaagden uitgedaagd" sequence="20" value="1"/>
+                <element inactive_on_update="false" label="Gestart" sequence="30" value="2"/>
+                <element inactive_on_update="false" label="Beëindigd" sequence="40" value="3"/>
+                <element inactive_on_update="false" label="Geannuleerd" sequence="50" value="4"/>
+            </choice>
+        </element>
+        <element attributes="no_add_me=true,no_email=true,slushbucket_ref_no_expand=true" dynamic_ref_qual="8bfb11ce0f58f7409a53cd8ce1050eb4" label="Uitgedaagde(n)" mandatory="true" max_length="1024" name="uitgedaagden" reference="sys_user" reference_qual="javascript:new x_200738_bet.BettingGameUtils().getPlayersButMe()" type="glide_list" use_reference_qualifier="dynamic"/>
+        <element label="Verliezers" max_length="4000" name="verliezers" read_only="true" reference="sys_user" type="glide_list"/>
+        <element dynamic_ref_qual="e9b5161a0f983b409a53cd8ce1050e71" label="Winnaar" max_length="32" name="winnaar" reference="sys_user" reference_qual="javascript:new x_200738_bet.BettingGameUtils(current).getPlayersForBet()" type="reference" use_reference_qualifier="dynamic"/>
+        <index name="index">
+            <element name="jury"/>
+        </index>
+        <index name="index2">
+            <element name="winnaar"/>
+        </index>
+        <index name="index3">
+            <element name="gemaakt_door"/>
+        </index>
+    </element>
+</database>

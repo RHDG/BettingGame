@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_200738_bet.inzetCheck</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>inzetCheck</name>
+        <script><![CDATA[var inzetCheck = Class.create();
+inzetCheck.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+	validateInzet: function(){
+		var player = this.getParameter("sysparm_creator");
+		var inzet = this.getParameter("sysparm_inzet");
+		var score;
+
+		var gr = new GlideRecord('sys_user');
+		gr.get(player);
+
+		score = gr.x_200738_bet_score;
+
+		if (inzet > score){
+
+			return score;
+		}
+		else 
+			return "false";
+	},
+
+	type: 'inzetCheck'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-04-03 08:36:33</sys_created_on>
+        <sys_id>dacc5f4a0fa477809a53cd8ce1050e6a</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>inzetCheck</sys_name>
+        <sys_package display_value="Betting Game" source="x_200738_bet">52017ba10f94b7409a53cd8ce1050e3a</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Betting Game">52017ba10f94b7409a53cd8ce1050e3a</sys_scope>
+        <sys_update_name>sys_script_include_dacc5f4a0fa477809a53cd8ce1050e6a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-04-23 09:27:53</sys_updated_on>
+    </sys_script_include>
+</record_update>

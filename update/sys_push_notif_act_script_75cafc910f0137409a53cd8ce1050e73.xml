@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_push_notif_act_script">
+    <sys_push_notif_act_script action="INSERT_OR_UPDATE">
+        <name>Uitdaging aangaan</name>
+        <script><![CDATA[(function runAction(/*Optional GlideRecord*/ current) {
+
+ var list = current.geaccepteerd;
+var add = gs.getUserID();
+var inzet = current.inzet;
+var user = new GlideRecord('sys_user');
+user.get(add);
+var max = user.x_200738_bet_score;
+
+if (inzet <= max){
+	if (current.uitgedaagden.includes(add) && (current.geaccepteerd.indexOf(add)==-1 || list == '')){
+		if (list == '')
+			current.geaccepteerd = add;
+		else 
+			current.geaccepteerd = list.toString()+","+add;
+		current.update();
+	}
+	else {
+		return new Error('Je hebt deze uitdaging al geaccepteerd!');
+	}
+}
+else {
+	return new Error('Je hebt niet genoeg punten om deze uitdaging aan te gaan!');
+}
+
+
+})(current);]]></script>
+        <sys_class_name>sys_push_notif_act_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-04-25 09:21:16</sys_created_on>
+        <sys_id>75cafc910f0137409a53cd8ce1050e73</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Uitdaging aangaan</sys_name>
+        <sys_package display_value="Betting Game" source="x_200738_bet">52017ba10f94b7409a53cd8ce1050e3a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Betting Game">52017ba10f94b7409a53cd8ce1050e3a</sys_scope>
+        <sys_update_name>sys_push_notif_act_script_75cafc910f0137409a53cd8ce1050e73</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-04-25 09:24:14</sys_updated_on>
+    </sys_push_notif_act_script>
+</record_update>

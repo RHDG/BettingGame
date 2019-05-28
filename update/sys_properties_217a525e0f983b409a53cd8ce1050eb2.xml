@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>Has the game started?</description>
+        <ignore_cache>false</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_200738_bet.gameActive</name>
+        <read_roles/>
+        <suffix>gameActive</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-22 12:05:03</sys_created_on>
+        <sys_id>217a525e0f983b409a53cd8ce1050eb2</sys_id>
+        <sys_mod_count>16</sys_mod_count>
+        <sys_name>x_200738_bet.gameActive</sys_name>
+        <sys_package display_value="Betting Game" source="x_200738_bet">52017ba10f94b7409a53cd8ce1050e3a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Betting Game">52017ba10f94b7409a53cd8ce1050e3a</sys_scope>
+        <sys_update_name>sys_properties_217a525e0f983b409a53cd8ce1050eb2</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-05-25 12:30:00</sys_updated_on>
+        <type>boolean</type>
+        <value>false</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=217a525e0f983b409a53cd8ce1050eb2"/>
+</record_update>

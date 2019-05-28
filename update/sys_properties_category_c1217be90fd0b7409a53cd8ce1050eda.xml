@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties_category">
+    <sys_properties_category action="INSERT_OR_UPDATE">
+        <name>Settings</name>
+        <sys_class_name>sys_properties_category</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-20 10:27:27</sys_created_on>
+        <sys_id>c1217be90fd0b7409a53cd8ce1050eda</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Settings</sys_name>
+        <sys_package display_value="Betting Game" source="x_200738_bet">52017ba10f94b7409a53cd8ce1050e3a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Betting Game">52017ba10f94b7409a53cd8ce1050e3a</sys_scope>
+        <sys_update_name>sys_properties_category_c1217be90fd0b7409a53cd8ce1050eda</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-03-20 10:27:27</sys_updated_on>
+        <title/>
+    </sys_properties_category>
+    <sys_translated_text action="delete_multiple" query="documentkey=c1217be90fd0b7409a53cd8ce1050eda"/>
+</record_update>

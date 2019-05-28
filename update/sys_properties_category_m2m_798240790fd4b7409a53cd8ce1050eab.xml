@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties_category_m2m">
+    <sys_properties_category_m2m action="INSERT_OR_UPDATE">
+        <category display_value="Settings">c1217be90fd0b7409a53cd8ce1050eda</category>
+        <order>400</order>
+        <property display_value="x_200738_bet.bonus.mostLoses" name="x_200738_bet.bonus.mostLoses">81527b6d0f94b7409a53cd8ce1050e9d</property>
+        <sys_class_name>sys_properties_category_m2m</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-20 11:43:24</sys_created_on>
+        <sys_id>798240790fd4b7409a53cd8ce1050eab</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>x_200738_bet.bonus.mostLoses.Settings</sys_name>
+        <sys_package display_value="Betting Game" source="x_200738_bet">52017ba10f94b7409a53cd8ce1050e3a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Betting Game">52017ba10f94b7409a53cd8ce1050e3a</sys_scope>
+        <sys_update_name>sys_properties_category_m2m_798240790fd4b7409a53cd8ce1050eab</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-03-22 12:06:06</sys_updated_on>
+    </sys_properties_category_m2m>
+</record_update>

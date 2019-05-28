@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_title">
+    <sys_ui_title action="INSERT_OR_UPDATE">
+        <field_list/>
+        <script><![CDATA[var aanhef = "Hij wedt dat: ";
+if (gs.getUserID() == current.gemaakt_door.sys_id)
+	aanhef = "Ik wed dat: ";
+
+var omschrijving = current.omschrijving.replace(/\n/g, " ");
+
+var title = current.number+" van "+current.gemaakt_door.first_name;
+var extras = ["Inzet: "+current.inzet, "Tegen: "+current.uitgedaagden.getDisplayValue(), aanhef+omschrijving.substring(0, 90)+"..."];
+
+titleValues.setTitle(title);
+titleValues.setExtras(extras);]]></script>
+        <search_fields/>
+        <style_field/>
+        <sys_class_name>sys_ui_title</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-04-18 13:11:40</sys_created_on>
+        <sys_id>f26ca98b0ff43f009a53cd8ce1050e69</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>x_200738_bet_weddenschap</sys_name>
+        <sys_package display_value="Betting Game" source="x_200738_bet">52017ba10f94b7409a53cd8ce1050e3a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Betting Game">52017ba10f94b7409a53cd8ce1050e3a</sys_scope>
+        <sys_update_name>sys_ui_title_f26ca98b0ff43f009a53cd8ce1050e69</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-04-18 14:53:34</sys_updated_on>
+        <table>x_200738_bet_weddenschap</table>
+    </sys_ui_title>
+</record_update>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="state" table="x_200738_bet_weddenschap" version="3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Nieuw</label>
+            <language>en</language>
+            <name>x_200738_bet_weddenschap</name>
+            <sequence>10</sequence>
+            <sys_created_by>Richard</sys_created_by>
+            <sys_created_on>2019-03-21 14:19:43</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>79cf29420fd8f7409a53cd8ce1050e0b</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>Richard</sys_updated_by>
+            <sys_updated_on>2019-03-21 14:20:31</sys_updated_on>
+            <value>0</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Uitgedaagden uitgedaagd</label>
+            <language>en</language>
+            <name>x_200738_bet_weddenschap</name>
+            <sequence>20</sequence>
+            <sys_created_by>Richard</sys_created_by>
+            <sys_created_on>2019-03-21 14:20:04</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>12ef29420fd8f7409a53cd8ce1050e0f</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>Richard</sys_updated_by>
+            <sys_updated_on>2019-03-21 14:20:34</sys_updated_on>
+            <value>1</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Gestart</label>
+            <language>en</language>
+            <name>x_200738_bet_weddenschap</name>
+            <sequence>30</sequence>
+            <sys_created_by>Richard</sys_created_by>
+            <sys_created_on>2019-03-21 14:20:25</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>e6ff69420fd8f7409a53cd8ce1050ed5</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>Richard</sys_updated_by>
+            <sys_updated_on>2019-03-21 14:22:04</sys_updated_on>
+            <value>2</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Beëindigd</label>
+            <language>en</language>
+            <name>x_200738_bet_weddenschap</name>
+            <sequence>40</sequence>
+            <sys_created_by>Richard</sys_created_by>
+            <sys_created_on>2019-03-21 14:21:29</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>270079420fd8f7409a53cd8ce1050ef4</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>Richard</sys_updated_by>
+            <sys_updated_on>2019-03-21 14:22:00</sys_updated_on>
+            <value>3</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Geannuleerd</label>
+            <language>en</language>
+            <name>x_200738_bet_weddenschap</name>
+            <sequence>50</sequence>
+            <sys_created_by>Richard</sys_created_by>
+            <sys_created_on>2019-03-21 14:21:51</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>9f403d420fd8f7409a53cd8ce1050e06</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>Richard</sys_updated_by>
+            <sys_updated_on>2019-03-21 14:22:20</sys_updated_on>
+            <value>4</value>
+        </sys_choice>
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>state</element>
+            <name>x_200738_bet_weddenschap</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>Richard</sys_created_by>
+            <sys_created_on>2019-03-21 14:19:44</sys_created_on>
+            <sys_id>11ef69420fd8f7409a53cd8ce1050ec5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>state</sys_name>
+            <sys_package display_value="Betting Game" source="x_200738_bet">52017ba10f94b7409a53cd8ce1050e3a</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Betting Game">52017ba10f94b7409a53cd8ce1050e3a</sys_scope>
+            <sys_update_name>sys_choice_x_200738_bet_weddenschap_state</sys_update_name>
+            <sys_updated_by>Richard</sys_updated_by>
+            <sys_updated_on>2019-03-21 14:19:44</sys_updated_on>
+        </sys_choice_set>
+    </sys_choice>
+</record_update>

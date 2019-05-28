@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>What is the least amount of points a player can have?</description>
+        <ignore_cache>false</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_200738_bet.minimalPoints</name>
+        <read_roles/>
+        <suffix>minimalPoints</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-20 13:27:02</sys_created_on>
+        <sys_id>4a0a5cfd0f18b7409a53cd8ce1050e30</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>x_200738_bet.minimalPoints</sys_name>
+        <sys_package display_value="Betting Game" source="x_200738_bet">52017ba10f94b7409a53cd8ce1050e3a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Betting Game">52017ba10f94b7409a53cd8ce1050e3a</sys_scope>
+        <sys_update_name>sys_properties_4a0a5cfd0f18b7409a53cd8ce1050e30</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-05-24 21:00:02</sys_updated_on>
+        <type>string</type>
+        <value>28.0</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=4a0a5cfd0f18b7409a53cd8ce1050e30"/>
+</record_update>

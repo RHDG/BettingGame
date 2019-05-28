@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_200738_bet.BettingGameUtils</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>BettingGameUtils</name>
+        <script><![CDATA[gs.include('underscore.min');
+var BettingGameUtils = Class.create();
+BettingGameUtils.prototype = {
+	initialize: function(gr, grType) {
+		if (!_.isUndefined(gr)) {
+			if (_.isUndefined(grType)) {
+				//normal initialization
+				this.gr = gr;
+			} else {
+				//gr is a sys_id, grType is it's sys_class
+				this.gr = new GlideRecord(grType);
+				this.gr.get(gr);
+			}
+		}
+	},
+
+	resetGame: function(){
+		gs.info('Resetting the game');
+		gs.info('Deleting bets');
+		var betsGr = new GlideRecord('x_200738_bet_weddenschap');
+		betsGr.deleteMultiple();
+
+		var userGr = new GlideRecord('sys_user');
+		userGr.addQuery('x_200738_bet_betting_game', true);
+		userGr.query();
+		gs.info('Reset jury count');
+		userGr.setValue('x_200738_bet_jury_count', 0);
+		gs.info('Reset score');
+		userGr.setValue('x_200738_bet_score', 200);
+		userGr.updateMultiple();
+
+		/*
+		gs.info('Resetting number counter');
+		var countGr = new GlideRecord('sys_number_counter');
+		countGr.get('678aa52c0f2033809a53cd8ce1050e33');
+		countGr.number = 0;
+		countGr.update();
+		*/
+
+	},
+
+	checkInzet: function(inzet){
+		var allowed = ['true'];
+		var userList = this.gr.uitgedaagden.toString()+','+this.gr.gemaakt_door.sys_id.toString();
+		var userArray = userList.split(',');
+		for (var i = 0; i < userArray.length; ++i){
+			var userGr = new GlideRecord('sys_user');
+			userGr.get(userArray[i]);
+			if (userGr.x_200738_bet_score < inzet){
+				allowed[i] = userGr.first_name;
+			}
+		}
+		return allowed;
+	},
+	maxInzet: function(){
+		var minscore;
+		var victim;
+		var result = [];
+		var userList = this.gr.uitgedaagden.toString()+','+this.gr.gemaakt_door.sys_id.toString();
+		var userGr = new GlideRecord('sys_user');
+		userGr.addEncodedQuery('sys_idIN'+userList);
+		userGr.orderByDesc('x_200738_bet_score');
+		userGr.query();
+		while (userGr.next()){
+			minscore = userGr.x_200738_bet_score;
+			victim = userGr.first_name;
+		}
+		result.push(minscore);
+		result.push(victim);
+		return result;
+
+	},
+
+	getToApprove: function(userSys){
+		var records=[];
+		var betGr = new GlideRecord('x_200738_bet_weddenschap');
+		betGr.addQuery('uitgedaagden', 'CONTAINS', userSys);
+		//betGr.addQuery('geaccepteerd', 'DOES NOT CONTAIN', userSys);
+		betGr.query();
+		while (betGr.next()){
+			if (!betGr.geaccepteerd.toString().includes(userSys.toString())){
+				records.push(betGr.sys_id.toString());
+			}
+		}
+		return records.toString();
+	},
+
+	countPlayers: function(){
+		var userGr = new GlideRecord('sys_user');
+		userGr.addQuery('x_200738_bet_betting_game', true);
+		userGr.query();
+		return userGr.getRowCount();
+	},
+
+	getRandomJury: function(wedder,list){
+		var excluded = wedder + "," + list;
+		var exclArray = excluded.split(",");
+		var array = [];
+		var lowest = 0;
+		var lowscore = 0;
+		var jury;
+		var userGr = new GlideRecord('sys_user');
+		userGr.addQuery('x_200738_bet_betting_game', true);
+		for (var i=0; i < exclArray.length; i++){
+			userGr.addQuery('sys_id', '!=', exclArray[i]);
+		}
+		userGr.orderByDesc('x_200738_bet_jury_count');
+		userGr.query();
+		while (userGr.next()){
+			lowest = userGr.x_200738_bet_jury_count.toString();
+		}
+
+		var userGr2 = new GlideRecord('sys_user');
+		userGr2.addQuery('x_200738_bet_betting_game', true);
+		userGr2.addQuery('x_200738_bet_jury_count', lowest);
+		for (var j=0; j < exclArray.length; j++){
+			userGr2.addQuery('sys_id', '!=', exclArray[j]);
+		}
+		userGr2.orderByDesc('x_200738_bet_score');
+		userGr2.query();
+		while (userGr2.next()){
+			lowscore = userGr2.x_200738_bet_score;
+		}
+
+		var userGr3 = new GlideRecord('sys_user');
+		userGr3.addQuery('x_200738_bet_betting_game', true);
+		userGr3.addQuery('x_200738_bet_jury_count', lowest);
+		userGr3.addQuery('x_200738_bet_score', lowscore);
+		for (var k=0; k < exclArray.length; k++){
+			userGr3.addQuery('sys_id', '!=', exclArray[k]);
+		}
+		userGr3.query();
+
+		while (userGr3.next()){
+			array.push(userGr3.sys_id.toString());
+		}
+		gs.info('possible Jury: '+array.toString());
+		var rand = array[Math.floor(Math.random() * array.length)];
+		return rand;
+	},
+
+	getPlayersButMe: function(){
+		var players = [];
+		var currentSys = gs.getUserID();
+		var userGr = new GlideRecord('sys_user');
+		userGr.addEncodedQuery('x_200738_bet_betting_game=true^sys_id!='+currentSys);
+		userGr.query();
+
+		while(userGr.next()){
+			players.push(userGr.sys_id.toString());
+		}
+
+		return 'sys_idIN' + players.toString();
+	},
+	getPlayersForBet: function(){
+		var betters = [];
+		betters.push(this.gr.gemaakt_door.sys_id.toString());
+		betters.push(this.gr.uitgedaagden);
+
+		return 'sys_idIN' + betters.toString();
+	},
+	winnerPoints: function(param1){
+		var winner = this.gr.winnaar.sys_id.toString();
+		var losers = new BettingGameUtils()._getLosers(this.gr);
+		var inzet = this.gr.inzet;
+		gs.info(losers);
+		var currentSys = this.gr.sys_id.toString();
+		var winPoints = this.gr.inzet + new BettingGameUtils()._dailyBonus(winner,losers,currentSys,inzet);
+
+
+		var userGr = new GlideRecord('sys_user');
+		userGr.get(winner);
+		var currentPoints = userGr.x_200738_bet_score;
+		if (param1 == 'scoreOnly'){
+			return winPoints;
+		}
+		else {
+			userGr.x_200738_bet_score = currentPoints + winPoints;
+			userGr.update();
+		}
+
+	},
+	_dailyBonus: function(winner,losers,currentSys,inzet){
+		var amount = losers.split(",").length -1;
+		gs.info('amount: '+amount);
+		var wonFrom = [];
+		if (amount == 0){
+			var betGr = new GlideRecord('x_200738_bet_weddenschap');
+			gs.info('winner: '+winner+'  sys: '+currentSys);
+			betGr.addEncodedQuery('winnaar='+winner+'^sys_id!='+currentSys+'^sys_updated_onONToday@javascript:gs.beginningOfToday()@javascript:gs.endOfToday()');
+			betGr.query();
+			while (betGr.next()){
+				gs.info('got one');
+				var lostthen = new BettingGameUtils()._getLosers(betGr);
+				amount = lostthen.split(",").length -1;
+				if (amount == 0){
+					gs.info('won this time: '+lostthen);
+					wonFrom.push(lostthen);
+				}
+				amount = 0;
+
+			}
+			wonFrom = wonFrom.toString();
+			var wonAlready = wonFrom.includes(losers);
+			gs.info('wonFrom: '+wonFrom+'   losers: '+losers+'   wonAlready: '+wonAlready+'   amount: '+amount);
+			if (amount == 0 && wonAlready == false){
+				var daily = gs.getProperty('x_200738_bet.dailybonusPerday');
+				var day = gs.getProperty('x_200738_bet.currentDay');
+				return daily * day;
+			}
+			else {
+				return 0;
+			}
+		}
+		else {
+			//er is dus meer dan 1 speler, dus dan krijgt hij de inzet x het aantal spelers
+			var score = amount * inzet;
+			return score;
+		}
+
+
+	},
+	loserPoints: function(){
+		var minPoints = gs.getProperty('x_200738_bet.minimalPoints');
+		var losers = new BettingGameUtils()._getLosers(this.gr);
+		var inzet = this.gr.inzet;
+		var userGr = new GlideRecord('sys_user');
+		userGr.addEncodedQuery('sys_idIN'+losers);
+		userGr.query();
+		while (userGr.next()){
+			var currentPoints = userGr.x_200738_bet_score;
+			var newPoints = currentPoints - inzet;
+			if (newPoints <= minPoints){
+				userGr.x_200738_bet_score = minPoints;
+				userGr.update();
+			}
+			else{
+				userGr.x_200738_bet_score = newPoints;
+				userGr.update();
+			}
+		}
+
+	},
+	_getLosers: function(current){
+		var winner = current.winnaar.sys_id.toString();
+		var starter = current.gemaakt_door.sys_id.toString();
+		var uitgedaagden = current.uitgedaagden.split(",");
+		var players = uitgedaagden.concat(starter);
+		players.splice(players.indexOf(winner), 1);
+		gs.info(players.toString());
+		current.verliezers = players.toString();
+		current.update();
+		return players.toString();
+
+	},
+	juryCount: function(){
+		var jury = this.gr.jury.sys_id.toString();
+		var inzet =  this.gr.inzet;
+		var juryPercentage = gs.getProperty('x_200738_bet.juryBonus');
+		var multiplier = juryPercentage / 100;
+		var juryBonus = multiplier * inzet;
+		var userGr = new GlideRecord('sys_user');
+		userGr.get('sys_id', jury);
+		var currentCount = userGr.x_200738_bet_jury_count;
+		userGr.x_200738_bet_jury_count = currentCount +1;
+		var currentScore = userGr.x_200738_bet_score;
+		userGr.x_200738_bet_score = currentScore + Math.round(juryBonus);
+		userGr.update();
+	},
+
+	setAllEndBonus: function(){
+		var bonusR = Number(gs.getProperty('x_200738_bet.bonus.bestRatio'));
+		var bonusB = Number(gs.getProperty('x_200738_bet.bonus.mostBets'));
+		var bonusW = Number(gs.getProperty('x_200738_bet.bonus.mostWins'));
+		var bonusL = Number(gs.getProperty('x_200738_bet.bonus.mostLoses'));
+		var userGr = new GlideRecord('sys_user');
+		var currentUserSys;
+		var maked;
+		var totals;
+		var wins;
+		var ratio;
+		var loses;
+		var bestRatio = 0;
+		var mostBets = 0;
+		var mostWins = 0;
+		var mostLost = 0;
+		var bestPlayer;
+		var mostPlayed;
+		var mostWon;
+		var mostLoser;
+		userGr.addQuery('x_200738_bet_betting_game', true);
+		userGr.query();
+
+		while (userGr.next()){
+			maked = 0;
+			totals=0;
+			wins=0;
+			ratio=0;
+			currentUserSys = userGr.sys_id.toString();
+			gs.info('Running for: '+ currentUserSys);
+			var betMaked = new GlideRecord('x_200738_bet_weddenschap');
+			betMaked.addEncodedQuery('state=3^gemaakt_door='+currentUserSys);
+			betMaked.query();
+			while (betMaked.next())
+				maked = maked +1;
+			var betGr = new GlideRecord('x_200738_bet_weddenschap');
+			betGr.addEncodedQuery('state=3^gemaakt_door='+currentUserSys+'^ORuitgedaagdenLIKE'+currentUserSys);
+			betGr.query();
+			while (betGr.next())
+				totals = totals+1;
+			var betGr2 = new GlideRecord('x_200738_bet_weddenschap');
+			betGr2.addEncodedQuery('state=3^winnaar='+currentUserSys);
+			betGr2.query();
+			while (betGr2.next())
+				wins = wins+1;
+			gs.info(totals+' | '+wins);
+
+			ratio = wins / totals;
+			loses = wins - totals;
+			if (ratio > bestRatio){
+				gs.info('current bestR: '+bestRatio+" current ratio: "+ratio+" best player: "+bestPlayer);
+				bestRatio = ratio;
+				bestPlayer = currentUserSys;
+			}
+			if (maked > mostBets){
+				gs.info('current mostB: '+mostBets+" current maked: "+maked+" most player: "+mostPlayed);
+				mostBets = maked;
+				mostPlayed = currentUserSys;
+			}
+			if (wins > mostWins){
+				gs.info('current mostW: '+mostWins+" current wins: "+wins+" most won: "+mostWon);
+				mostWins = wins;
+				mostWon = currentUserSys;
+			}
+			if (loses < mostLost){
+				gs.info('current mostL: '+mostLost+" current loses: "+loses+" most loses: "+loses);
+				mostLost = loses;
+				mostLoser = currentUserSys;
+			}
+
+		}
+		gs.info("Best W/L: "+bestPlayer);
+		gs.info("Most Bets: "+mostPlayed);
+		gs.info("Most Wins: "+mostWon);
+		gs.info("Most Lost: "+mostLoser);
+		var userGr2 = new GlideRecord('sys_user');
+		userGr2.get(bestPlayer);
+		userGr2.x_200738_bet_score = userGr2.x_200738_bet_score + bonusR;
+		userGr2.update();
+
+		var userGr3 = new GlideRecord('sys_user');
+		userGr3.get(mostPlayed);
+		userGr3.x_200738_bet_score = userGr3.x_200738_bet_score + bonusB;
+		userGr3.update();
+
+		var userGr4 = new GlideRecord('sys_user');
+		userGr4.get(mostWon);
+		userGr4.x_200738_bet_score = userGr4.x_200738_bet_score + bonusW;
+		userGr4.update();
+
+		var userGr5 = new GlideRecord('sys_user');
+		userGr5.get(mostLoser);
+		userGr5.x_200738_bet_score = userGr5.x_200738_bet_score + bonusL;
+		userGr5.update();
+	},
+
+	type: 'BettingGameUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-20 14:47:39</sys_created_on>
+        <sys_id>6f1aac310f98b7409a53cd8ce1050e29</sys_id>
+        <sys_mod_count>143</sys_mod_count>
+        <sys_name>BettingGameUtils</sys_name>
+        <sys_package display_value="Betting Game" source="x_200738_bet">52017ba10f94b7409a53cd8ce1050e3a</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Betting Game">52017ba10f94b7409a53cd8ce1050e3a</sys_scope>
+        <sys_update_name>sys_script_include_6f1aac310f98b7409a53cd8ce1050e29</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-04-26 13:38:18</sys_updated_on>
+    </sys_script_include>
+</record_update>

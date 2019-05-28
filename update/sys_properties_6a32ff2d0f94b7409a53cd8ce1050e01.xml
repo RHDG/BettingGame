@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>How many points will having the most wins yield?</description>
+        <ignore_cache>false</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_200738_bet.bonus.mostWins</name>
+        <read_roles/>
+        <suffix>bonus.mostWins</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-20 10:32:11</sys_created_on>
+        <sys_id>6a32ff2d0f94b7409a53cd8ce1050e01</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_200738_bet.bonus.mostWins</sys_name>
+        <sys_package display_value="Betting Game" source="x_200738_bet">52017ba10f94b7409a53cd8ce1050e3a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Betting Game">52017ba10f94b7409a53cd8ce1050e3a</sys_scope>
+        <sys_update_name>sys_properties_6a32ff2d0f94b7409a53cd8ce1050e01</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-03-20 10:32:11</sys_updated_on>
+        <type>integer</type>
+        <value>40</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=6a32ff2d0f94b7409a53cd8ce1050e01"/>
+</record_update>

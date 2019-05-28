@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_mobile_home_page_module">
+    <sys_ui_mobile_home_page_module action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <background_color>#81878e</background_color>
+        <content_style>light_content</content_style>
+        <icon>form</icon>
+        <image/>
+        <module display_value="Weddenschappen van/met mij wachtend op acceptatie">025fafa70f907f409a53cd8ce1050e26</module>
+        <roles/>
+        <subtitle/>
+        <sys_class_name>sys_ui_mobile_home_page_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-27 22:02:09</sys_created_on>
+        <sys_id>08f25e840f28bf409a53cd8ce1050ea6</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>In afwachting van anderen</sys_name>
+        <sys_package display_value="Betting Game" source="x_200738_bet">52017ba10f94b7409a53cd8ce1050e3a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Betting Game">52017ba10f94b7409a53cd8ce1050e3a</sys_scope>
+        <sys_update_name>sys_ui_mobile_home_page_module_08f25e840f28bf409a53cd8ce1050ea6</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-04-18 12:57:27</sys_updated_on>
+        <title>In afwachting van anderen</title>
+    </sys_ui_mobile_home_page_module>
+</record_update>

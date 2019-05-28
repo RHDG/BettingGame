@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_action">
+    <sys_ui_action action="INSERT_OR_UPDATE">
+        <action_name>Uitdaging aangaan</action_name>
+        <active>true</active>
+        <client>false</client>
+        <client_script_v2/>
+        <comments/>
+        <condition>current.uitgedaagden.includes(gs.getUserID()) &amp;&amp; current.geaccepteerd.indexOf(gs.getUserID()) === -1</condition>
+        <form_action>true</form_action>
+        <form_button>true</form_button>
+        <form_button_v2>false</form_button_v2>
+        <form_context_menu>false</form_context_menu>
+        <form_link>false</form_link>
+        <form_menu_button_v2>false</form_menu_button_v2>
+        <form_style>unstyled</form_style>
+        <hint/>
+        <isolate_script>false</isolate_script>
+        <list_action>false</list_action>
+        <list_banner_button>false</list_banner_button>
+        <list_button>false</list_button>
+        <list_choice>false</list_choice>
+        <list_context_menu>false</list_context_menu>
+        <list_link>false</list_link>
+        <list_save_with_form_button>false</list_save_with_form_button>
+        <list_style/>
+        <name>Uitdaging aangaan</name>
+        <onclick/>
+        <order>100</order>
+        <script><![CDATA[var inzet = current.inzet;
+var user = new GlideRecord('sys_user');
+user.get(gs.getUserID());
+var max = user.x_200738_bet_score;
+
+gs.info('inzet: '+inzet+' max: '+max+" user: "+user.first_name);
+
+if (inzet <= max){
+	/*
+	var list = current.geaccepteerd;
+	var add = gs.getUserID();
+	if (list)
+		current.geaccepteerd = list.toString()+","+add;
+
+	else 
+		current.geaccepteerd = add;
+
+	current.update();
+	*/
+	alert('oki doki');
+}
+else {
+	alert("Je hebt niet genoeg punten om deze uitdaging aan te gaan!");
+}]]></script>
+        <show_insert>false</show_insert>
+        <show_multiple_update>false</show_multiple_update>
+        <show_query>false</show_query>
+        <show_update>true</show_update>
+        <sys_class_name>sys_ui_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-25 11:55:09</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>ced435d30f9cfb409a53cd8ce1050ef4</sys_id>
+        <sys_mod_count>20</sys_mod_count>
+        <sys_name>Uitdaging aangaan</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Betting Game" source="x_200738_bet">52017ba10f94b7409a53cd8ce1050e3a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Betting Game">52017ba10f94b7409a53cd8ce1050e3a</sys_scope>
+        <sys_update_name>sys_ui_action_ced435d30f9cfb409a53cd8ce1050ef4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-04-18 15:04:12</sys_updated_on>
+        <table>x_200738_bet_weddenschap</table>
+        <ui11_compatible>true</ui11_compatible>
+        <ui16_compatible>true</ui16_compatible>
+    </sys_ui_action>
+</record_update>

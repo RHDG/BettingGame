@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="winnaar" table="x_200738_bet_weddenschap" version="3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>winnaar</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Outlook</label>
+            <language>en</language>
+            <name>x_200738_bet_weddenschap</name>
+            <sequence>0</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-03-22 12:29:40</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>0b40aad20fd83b409a53cd8ce1050e9b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-03-22 12:29:40</sys_updated_on>
+            <value>1</value>
+        </sys_choice>
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>winnaar</element>
+            <name>x_200738_bet_weddenschap</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-03-22 12:29:40</sys_created_on>
+            <sys_id>8340aad20fd83b409a53cd8ce1050e9c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>winnaar</sys_name>
+            <sys_package display_value="Betting Game" source="x_200738_bet">52017ba10f94b7409a53cd8ce1050e3a</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Betting Game">52017ba10f94b7409a53cd8ce1050e3a</sys_scope>
+            <sys_update_name>sys_choice_x_200738_bet_weddenschap_winnaar</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-03-22 12:29:40</sys_updated_on>
+        </sys_choice_set>
+    </sys_choice>
+</record_update>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_push_notif_msg_content">
+    <sys_push_notif_msg_content action="INSERT_OR_UPDATE">
+        <name>Je bent een verliezer</name>
+        <push_app display_value="ServiceNow Mobile Application">ab704041ff1102009738ffffffffff33</push_app>
+        <script><![CDATA[(function buildJSON(/*GlideRecord*/ current, /*String*/ message, /*Object*/ attributes) {
+	
+	var points = new BettingGameUtils(current).winnerPoints('scoreOnly');
+
+ var json = {};
+
+ json = {
+		"aps" : {
+			"sound" : "default"
+		},
+		"record" : {
+			"table" : current.getTableName(),
+			"sys_id" : current.sys_id
+		},
+		"message" : current.number+": Je hebt deze weddenschap verloren. "+current.winnaar.first_name+" was de winnaar."
+
+	};
+
+ return json;
+
+})(current, message, attributes);]]></script>
+        <sys_class_name>sys_push_notif_msg_content</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-04-15 12:49:59</sys_created_on>
+        <sys_id>621b024a0f707b009a53cd8ce1050e7e</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Je bent een verliezer</sys_name>
+        <sys_package display_value="Betting Game" source="x_200738_bet">52017ba10f94b7409a53cd8ce1050e3a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Betting Game">52017ba10f94b7409a53cd8ce1050e3a</sys_scope>
+        <sys_update_name>sys_push_notif_msg_content_621b024a0f707b009a53cd8ce1050e7e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-04-25 11:43:04</sys_updated_on>
+    </sys_push_notif_msg_content>
+</record_update>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>true</advanced>
+        <condition table="x_200738_bet_weddenschap.winnaar">jury=javascript:gs.getUserID();^state=2^EQ<item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </condition>
+        <description>Allow write for winnaar in x_200738_bet_weddenschap, for users with role x_200738_bet.user, and if the ACL script returns true, and if the ACL condition (jury=javascript:gs.getUserID();^state=2^EQ) evaluates to true.</description>
+        <name>x_200738_bet_weddenschap.winnaar</name>
+        <operation display_value="write">write</operation>
+        <script><![CDATA[var answer = false;
+var active = gs.getProperty('x_200738_bet.gameActive');
+answer = active;]]></script>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-04-01 14:27:05</sys_created_on>
+        <sys_id>f6dade250f28f3809a53cd8ce1050e85</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>x_200738_bet_weddenschap.winnaar</sys_name>
+        <sys_package display_value="Betting Game" source="x_200738_bet">52017ba10f94b7409a53cd8ce1050e3a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Betting Game">52017ba10f94b7409a53cd8ce1050e3a</sys_scope>
+        <sys_update_name>sys_security_acl_f6dade250f28f3809a53cd8ce1050e85</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-05-15 06:20:06</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+</record_update>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_push_application">
+    <sys_push_application action="INSERT_OR_UPDATE">
+        <adm_client_id/>
+        <adm_client_secret/>
+        <certificate_id/>
+        <display_name>OwnPush</display_name>
+        <feedback>REST API</feedback>
+        <feedback_last_updated/>
+        <feedback_rest_message_id/>
+        <gcm_api_key/>
+        <name>Testje</name>
+        <parent_app/>
+        <push>REST API</push>
+        <push_rest_message_id/>
+        <sandbox_certificate_id/>
+        <sys_class_name>sys_push_application</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-04-25 09:13:12</sys_created_on>
+        <sys_id>3f4978510f0137409a53cd8ce1050e39</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>OwnPush</sys_name>
+        <sys_package display_value="Betting Game" source="x_200738_bet">52017ba10f94b7409a53cd8ce1050e3a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Betting Game">52017ba10f94b7409a53cd8ce1050e3a</sys_scope>
+        <sys_update_name>sys_push_application_3f4978510f0137409a53cd8ce1050e39</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-04-25 09:13:12</sys_updated_on>
+    </sys_push_application>
+</record_update>

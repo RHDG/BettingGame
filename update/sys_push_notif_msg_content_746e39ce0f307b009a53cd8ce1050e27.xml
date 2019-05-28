@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_push_notif_msg_content">
+    <sys_push_notif_msg_content action="INSERT_OR_UPDATE">
+        <name>Je bent Jury</name>
+        <push_app display_value="ServiceNow Mobile Application">ab704041ff1102009738ffffffffff33</push_app>
+        <script><![CDATA[(function buildJSON(/*GlideRecord*/ current, /*String*/ message, /*Object*/ attributes) {
+
+	var list1 = current.uitgedaagden.toString();
+	var list2 = '';
+	var i = 0;
+	var userGr = new GlideRecord('sys_user');
+	userGr.addEncodedQuery('sys_idIN'+list1);
+	userGr.query();
+	while (userGr.next()){
+		if (i==0){
+			list2 = userGr.first_name;
+			i=1;
+		}
+		else
+			list2 = list2+", "+userGr.first_name;
+	}
+
+	var json = {};
+
+	json = {
+		"aps" : {
+			"sound" : "default"
+		},
+		"record" : {
+			"table" : current.getTableName(),
+			"sys_id" : current.sys_id
+		},
+		"message" : current.number+": Je bent toegewezen als jury voor een weddenschap van "+current.gemaakt_door.first_name+" tegen: "+list2
+
+	};
+
+	return json;
+
+})(current, message, attributes);]]></script>
+        <sys_class_name>sys_push_notif_msg_content</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-04-15 11:54:44</sys_created_on>
+        <sys_id>746e39ce0f307b009a53cd8ce1050e27</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Je bent Jury</sys_name>
+        <sys_package display_value="Betting Game" source="x_200738_bet">52017ba10f94b7409a53cd8ce1050e3a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Betting Game">52017ba10f94b7409a53cd8ce1050e3a</sys_scope>
+        <sys_update_name>sys_push_notif_msg_content_746e39ce0f307b009a53cd8ce1050e27</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-04-15 12:09:44</sys_updated_on>
+    </sys_push_notif_msg_content>
+</record_update>

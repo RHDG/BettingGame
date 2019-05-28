@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_push_notif_msg_content">
+    <sys_push_notif_msg_content action="INSERT_OR_UPDATE">
+        <name>Een weddenschap is geannuleerd</name>
+        <push_app display_value="ServiceNow Mobile Application">ab704041ff1102009738ffffffffff33</push_app>
+        <script><![CDATA[(function buildJSON(/*GlideRecord*/ current, /*String*/ message, /*Object*/ attributes) {
+
+ var json = {};
+
+ json = {
+		"aps" : {
+			"sound" : "default"
+		},
+		"record" : {
+			"table" : current.getTableName(),
+			"sys_id" : current.sys_id
+		},
+		"message" : current.number+": Weddenschap is door "+current.jury.first_name+" geannuleerd"
+
+	};
+
+ return json;
+
+})(current, message, attributes);]]></script>
+        <sys_class_name>sys_push_notif_msg_content</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-04-15 13:08:22</sys_created_on>
+        <sys_id>774fca8e0f707b009a53cd8ce1050ee7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Een weddenschap is geannuleerd</sys_name>
+        <sys_package display_value="Betting Game" source="x_200738_bet">52017ba10f94b7409a53cd8ce1050e3a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Betting Game">52017ba10f94b7409a53cd8ce1050e3a</sys_scope>
+        <sys_update_name>sys_push_notif_msg_content_774fca8e0f707b009a53cd8ce1050ee7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-04-15 13:08:22</sys_updated_on>
+    </sys_push_notif_msg_content>
+</record_update>

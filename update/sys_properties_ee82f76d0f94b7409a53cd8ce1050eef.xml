@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>How much will the daily bonus advance each day?</description>
+        <ignore_cache>false</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_200738_bet.dailybonusPerday</name>
+        <read_roles/>
+        <suffix>dailybonusPerday</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-20 10:33:34</sys_created_on>
+        <sys_id>ee82f76d0f94b7409a53cd8ce1050eef</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_200738_bet.dailybonusPerday</sys_name>
+        <sys_package display_value="Betting Game" source="x_200738_bet">52017ba10f94b7409a53cd8ce1050e3a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Betting Game">52017ba10f94b7409a53cd8ce1050e3a</sys_scope>
+        <sys_update_name>sys_properties_ee82f76d0f94b7409a53cd8ce1050eef</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-03-20 10:33:34</sys_updated_on>
+        <type>integer</type>
+        <value>2</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=ee82f76d0f94b7409a53cd8ce1050eef"/>
+</record_update>
